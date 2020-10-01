@@ -48,10 +48,10 @@ class DoubleLinkedList:
                 last_node = current
                 current = current.next
 
-        if hasattr(last_node, 'next'):
-            print(f' found last_node: {last_node.value}    last_node.next is  {last_node.next}  ')
-            prev_node = last_node.prev
-            print(f' \t prev is   {prev_node}')
+        # if hasattr(last_node, 'next'):
+        #     print(f' found last_node: {last_node.value}    last_node.next is  {last_node.next}  ')
+        #     prev_node = last_node.prev
+        #     print(f' \t prev is   {prev_node}')
         # if getattr(last_node, 'next') is None:
         #     print(f' found last_node: {last_node.value}    last_node.next is  {last_node.next}')
 
@@ -76,7 +76,38 @@ class DoubleLinkedList:
                 return
             current = current.next
 
-        print(f' value {value} does not exist in list')
+        print(f' value {value} does not exist in the list')
+
+
+    def add_before_value(self, value, new_value):
+        
+        current = self.head
+        count = 0
+
+        if count == 0 and current.value == value:
+            new_node = Node(new_value)
+            prev_node = current.prev
+            new_node.next = current
+            new_node.prev = prev_node
+            self.head = new_node
+            return
+
+        while current.next is not None:
+            if current.next.value == value:
+                    new_node = Node(new_value)
+                    orig_current_next = current.next  # pointer to rest of list
+                    prev_node = current.prev
+                    current.next = new_node
+
+                    new_node.next = orig_current_next
+                    new_node.prev = prev_node
+                    break
+            current = current.next
+
+        print(f' value {value} does not exist in the list')    
+
+
+
 
     def print(self):
         current = self.head
@@ -124,7 +155,10 @@ dbl_ll_1.add_to_tail(12)
 dbl_ll_1.add_to_tail(13)
 dbl_ll_1.print()   # HEAD >> 10 -> 11 -> 12 -> 13 ->  TAIL 
 
-dbl_ll_1.add_after_value(10, 999)
-dbl_ll_1.print()   # HEAD >> 10 -> 11 -> 12 -> 13 -> 999 ->  TAIL
 
+# dbl_ll_1.add_after_value(10, 999)
+# dbl_ll_1.print()   # HEAD >> 10 -> 11 -> 12 -> 13 -> 999 ->  TAIL
 # dbl_ll_1.add_after_value(1000, 999)   # value 1000 does not exist in list
+
+dbl_ll_1.add_before_value(10, 999)
+dbl_ll_1.print()
