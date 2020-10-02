@@ -160,6 +160,11 @@ class DoubleLinkedList:
                 self.head = new_node
                 # return    
 
+    def add_list(self,list_vals):
+
+        for item in list_vals:
+            self.add_to_tail_2(item)
+
 
     def print(self):
         current = self.head
@@ -184,10 +189,13 @@ class DoubleLinkedList:
         #     print(f' current.next is None')
 
 
+    
 
-
-
+# my_list = [1, 2, 3]
 # dbl_ll_1 = DoubleLinkedList()
+# dbl_ll_1.add_list(my_list)
+# dbl_ll_1.print()
+
 
 # dbl_ll_1.add_to_tail_2(1)
 # dbl_ll_1.print()
