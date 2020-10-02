@@ -29,6 +29,14 @@ class DoubleLinkedList:
             # self.head.prev = new_node
             # self.head = new_node
 
+    def add_to_head_2(self, value):
+
+        current = self.head
+
+        new_node = Node(value)
+        new_node.next = current
+        self.head = new_node
+
 
     def add_to_tail(self, value):
 
@@ -160,7 +168,16 @@ class DoubleLinkedList:
 
 
 
+
+
 # dbl_ll_1 = DoubleLinkedList()
+
+# dbl_ll_1.add_to_head_2(3)
+# dbl_ll_1.print()  # HEAD >> 3 ->  TAIL
+# dbl_ll_1.add_to_head_2(2)
+# dbl_ll_1.add_to_head_2(1)
+# dbl_ll_1.print() # HEAD >> 1 -> 2 -> 3 ->  TAIL
+
 
 # # dbl_ll_1.add_after_value(1000, 999)   # value 1000 does not exist in list
 

@@ -14,6 +14,22 @@ class DoubleLinkedListTests_add_to_head(unittest.TestCase):
         self.dll.add_to_head(1)
         self.assertEqual(self.dll.head.value, 1)
 
+    # remove instance
+    def tearDown(self):
+          self.dll = None
+
+    def setUp(self):
+      self.dll = DoubleLinkedList()
+
+    def test_add_to_head_2(self):
+        self.dll.add_to_head_2(3)
+        self.assertEqual(self.dll.head.value, 3)     
+        self.dll.add_to_head_2(2)
+        self.assertEqual(self.dll.head.value, 2)
+        self.dll.add_to_head_2(1)
+        self.assertEqual(self.dll.head.value, 1)            
+
+
 if __name__ == '__main__':
 ## direct output
 #   unittest.main()
