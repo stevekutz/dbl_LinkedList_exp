@@ -134,8 +134,7 @@ class DoubleLinkedList:
             else:
                 # target value is first item in list
                 self.head = new_node
-                return    
-            current.prev = new_node
+                # return    
 
 
     def print(self):
@@ -161,33 +160,33 @@ class DoubleLinkedList:
 
 
 
-dbl_ll_1 = DoubleLinkedList()
+# dbl_ll_1 = DoubleLinkedList()
 
-# dbl_ll_1.add_after_value(1000, 999)   # value 1000 does not exist in list
-
-
-# dbl_ll_1.add_to_head(3)
-# dbl_ll_1.print()   # HEAD >> 3 ->  TAIL
-
-# dbl_ll_1.add_to_head(2)
-# dbl_ll_1.add_to_head(1)
-# dbl_ll_1.print()   # HEAD >> 1 -> 2 -> 3 ->  TAIL
+# # dbl_ll_1.add_after_value(1000, 999)   # value 1000 does not exist in list
 
 
-dbl_ll_1.add_to_tail(10)
-dbl_ll_1.print()   # HEAD >> 10 ->  TAIL
+# # dbl_ll_1.add_to_head(3)
+# # dbl_ll_1.print()   # HEAD >> 3 ->  TAIL
 
-dbl_ll_1.add_to_tail(11)
-dbl_ll_1.print()   # HEAD >> 10 -> 11 ->  TAIL 
-
-dbl_ll_1.add_to_tail(12)
-dbl_ll_1.add_to_tail(13)
-dbl_ll_1.print()   # HEAD >> 10 -> 11 -> 12 -> 13 ->  TAIL 
+# # dbl_ll_1.add_to_head(2)
+# # dbl_ll_1.add_to_head(1)
+# # dbl_ll_1.print()   # HEAD >> 1 -> 2 -> 3 ->  TAIL
 
 
-# dbl_ll_1.add_after_value(10, 999)
-# dbl_ll_1.print()   # HEAD >> 10 -> 11 -> 12 -> 13 -> 999 ->  TAIL
-# dbl_ll_1.add_after_value(1000, 999)   # value 1000 does not exist in list
+# dbl_ll_1.add_to_tail(10)
+# dbl_ll_1.print()   # HEAD >> 10 ->  TAIL
 
-dbl_ll_1.add_before_value(10, 999)
-dbl_ll_1.print()
+# dbl_ll_1.add_to_tail(11)
+# dbl_ll_1.print()   # HEAD >> 10 -> 11 ->  TAIL 
+
+# dbl_ll_1.add_to_tail(12)
+# dbl_ll_1.add_to_tail(13)
+# dbl_ll_1.print()   # HEAD >> 10 -> 11 -> 12 -> 13 ->  TAIL 
+
+
+# # dbl_ll_1.add_after_value(10, 999)
+# # dbl_ll_1.print()   # HEAD >> 10 -> 11 -> 12 -> 13 -> 999 ->  TAIL
+# # dbl_ll_1.add_after_value(1000, 999)   # value 1000 does not exist in list
+
+# dbl_ll_1.add_before_value_2(11, 999)
+# dbl_ll_1.print()
