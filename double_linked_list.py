@@ -84,7 +84,8 @@ class DoubleLinkedList:
         current = self.head
         count = 0
 
-        if count == 0 and current.value == value:
+        # if target is first in list
+        if current.value == value:
             new_node = Node(new_value)
             prev_node = current.prev
             new_node.next = current
@@ -92,21 +93,49 @@ class DoubleLinkedList:
             self.head = new_node
             return
 
+        # current is target insert value
+        # current.next is value after 
+
         while current.next is not None:
             if current.next.value == value:
-                    new_node = Node(new_value)
-                    orig_current_next = current.next  # pointer to rest of list
-                    prev_node = current.prev
-                    current.next = new_node
+                new_node = Node(new_value)
+                orig_current_next = current.next  # pointer to rest of list
+                prev_node = current.prev
+                current.next = new_node
 
-                    new_node.next = orig_current_next
-                    new_node.prev = prev_node
-                    break
+                new_node.next = orig_current_next
+                new_node.prev = prev_node
+                return
             current = current.next
 
         print(f' value {value} does not exist in the list')    
 
 
+    def add_before_value_2(self, value, new_value):
+
+        current = self.head
+
+        # find value
+        while current is not None:
+            if current.value == value:
+                break
+            current = current.next
+
+        if current is None:
+            print(f'value {value} is not in the list')
+        else:
+            new_node = Node(new_value)
+            new_node.next = current
+            new_node.prev = current.prev
+
+            # if target value is NOT first item in list 
+            if current.prev is not None:
+                current.prev.next = new_node
+            else:
+                # target value is first item in list
+                self.head = new_node
+                return    
+            current.prev = new_node
 
 
     def print(self):
