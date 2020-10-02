@@ -68,6 +68,22 @@ class DoubleLinkedList:
         last_node.next = new_node
         new_node.prev = last_node
 
+    def add_to_tail_2(self, value):
+        current = self.head
+        new_node = Node(value)
+        prev_node = None
+
+        if current is None:
+            self.head = new_node
+
+        else:
+            while current:
+                prev_node = current
+                current = current.next
+            prev_node.next = new_node
+            new_node.prev = prev_node
+
+
 
     def add_after_value(self, value, new_value):
 
@@ -158,6 +174,7 @@ class DoubleLinkedList:
 
         list_str += ' TAIL'    
         print(f'{list_str}')
+        return list_str    
 
         # if hasattr(self.head, 'next'):
         #     print(f' self.head.value  {self.head.value}')
@@ -171,6 +188,12 @@ class DoubleLinkedList:
 
 
 # dbl_ll_1 = DoubleLinkedList()
+
+# dbl_ll_1.add_to_tail_2(1)
+# dbl_ll_1.print()
+# dbl_ll_1.add_to_tail_2(2)
+# dbl_ll_1.add_to_tail_2(3)
+# dbl_ll_1.print()
 
 # dbl_ll_1.add_to_head_2(3)
 # dbl_ll_1.print()  # HEAD >> 3 ->  TAIL
