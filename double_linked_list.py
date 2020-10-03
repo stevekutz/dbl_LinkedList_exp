@@ -170,24 +170,59 @@ class DoubleLinkedList:
 
         current = self.head
         ind = 0
-        prev = None
+        prev_node = None
 
 
         while current is not None:
             if ind  == index:
                 break
             ind += 1
-            prev = current
+            prev_node = current
             current = current.next
 
         if index < 0 or index > ind:
             print(f' !!! index out of bounds')
             raise Exception("Error: index out of bounds of list indices")
                 
-        if prev is None:
+        if prev_node is None:
             self.head = current.next
+            self.head.prev = None
+            # current.prev = 
         else:
-            prev.next = current.next
+            prev_node.next = current.next
+            after_node = current.next
+            if after_node is not None:
+                after_node.prev = prev_node
+            # prev_node.prev = prev_node
+            print(f' current.value  {current.value} ')
+            print(f'prev_node.value  {prev_node.value}')
+
+    def remove_by_value(self, value):
+        orig_head = self.head    
+        current = self.head
+        prev_node = None
+
+        while current is not None:
+            print(f' at START current value {current.value}')
+            while current.value == value:
+                current = current.next
+     
+            if prev_node is None:
+                self.head = current
+                self.head.prev = None
+                # current.prev_node = self.head
+            else:
+                prev_node = current
+                current = prev_node
+                # current.prev = prev_node  
+            # else:
+            #     prev_node.next =  current.next   
+            #     current.prev_node = prev_node
+
+                print(f' current value {current.value}')
+
+            # prev_node = current
+            current = current.next
 
 
 
@@ -213,19 +248,44 @@ class DoubleLinkedList:
         # if getattr(current, 'next') is None:
         #     print(f' current.next is None')
 
+    def print_reverse(self):
 
+        current = self.head
+        list_str = 'TAIL >> '
+
+        while current.next is not None:
+            current = current.next
+
+        print(f' current.value   {current.value}')    
     
+        while current is not None:
+            list_str += str(current.value) + ' -> '
+            current = current.prev
 
-my_list = [1, 2, 3]
+        list_str += ' HEAD'
+        print(f'{list_str}')
+        return list_str
+
+my_list = [1, 1, 2, 1, 1, 3, 1, 1]
+# my_list = [1]
 dbl_ll_1 = DoubleLinkedList()
+# dbl_ll_1.add_list(my_list)
+# dbl_ll_1.print()   # HEAD >> 1 -> 2 -> 3 ->  TAIL
+
+# dbl_ll_1.remove_by_value(1)
+# dbl_ll_1.print()
+
+my_list = [1, 2, 3, 4]
 dbl_ll_1.add_list(my_list)
-dbl_ll_1.print()   # HEAD >> 1 -> 2 -> 3 ->  TAIL
-
-# dbl_ll_1.remove_by_index(0)
-# dbl_ll_1.print()   # HEAD >> 2 -> 3 ->  TAIL
-
-dbl_ll_1.remove_by_index(2)
 dbl_ll_1.print()
+# dbl_ll_1.print_reverse()
+
+dbl_ll_1.remove_by_index(0)
+dbl_ll_1.print()   # HEAD >> 2 -> 3 ->  TAIL
+dbl_ll_1.print_reverse()
+
+# dbl_ll_1.remove_by_index(2)
+# dbl_ll_1.print()
   
 # dbl_ll_1.add_to_tail_2(1)
 # dbl_ll_1.print()
