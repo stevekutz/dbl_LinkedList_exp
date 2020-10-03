@@ -166,6 +166,31 @@ class DoubleLinkedList:
             self.add_to_tail_2(item)
 
 
+    def remove_by_index(self, index):
+
+        current = self.head
+        ind = 0
+        prev = None
+
+
+        while current is not None:
+            if ind  == index:
+                break
+            ind += 1
+            prev = current
+            current = current.next
+
+        if index < 0 or index > ind:
+            print(f' !!! index out of bounds')
+            raise Exception("Error: index out of bounds of list indices")
+                
+        if prev is None:
+            self.head = current.next
+        else:
+            prev.next = current.next
+
+
+
     def print(self):
         current = self.head
         list_str = 'HEAD >> '
@@ -191,12 +216,17 @@ class DoubleLinkedList:
 
     
 
-# my_list = [1, 2, 3]
-# dbl_ll_1 = DoubleLinkedList()
-# dbl_ll_1.add_list(my_list)
-# dbl_ll_1.print()
+my_list = [1, 2, 3]
+dbl_ll_1 = DoubleLinkedList()
+dbl_ll_1.add_list(my_list)
+dbl_ll_1.print()   # HEAD >> 1 -> 2 -> 3 ->  TAIL
 
+# dbl_ll_1.remove_by_index(0)
+# dbl_ll_1.print()   # HEAD >> 2 -> 3 ->  TAIL
 
+dbl_ll_1.remove_by_index(2)
+dbl_ll_1.print()
+  
 # dbl_ll_1.add_to_tail_2(1)
 # dbl_ll_1.print()
 # dbl_ll_1.add_to_tail_2(2)
