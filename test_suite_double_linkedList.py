@@ -3,6 +3,7 @@ from test_add_to_head_tests import DoubleLinkedListTests_add_to_head
 from test_add_to_tail_tests import DoubleLinkedListTests_add_to_tail
 from test_add_list import DoubleLinkedListTests_add_list
 from test_remove_by_index import DoubleLinkedListTest_remove_by_index
+from test_add_after_value import DoubleLinkedListTests_add_after_value
 
 def suite():
     suite = unittest.TestSuite()
@@ -17,6 +18,9 @@ def suite():
     suite.addTest(DoubleLinkedListTest_remove_by_index('test_remove_by_index_0'))
     suite.addTest(DoubleLinkedListTest_remove_by_index('test_remove_by_index_inside'))
     suite.addTest(DoubleLinkedListTest_remove_by_index('test_remove_by_index_last'))
+
+    suite.addTest(DoubleLinkedListTests_add_after_value('test_add_after_value'))
+
     return suite
 
 
