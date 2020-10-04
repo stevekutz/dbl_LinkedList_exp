@@ -14,7 +14,7 @@ class DoubleLinkedListTests_add_to_tail(unittest.TestCase):
         self.assertEqual(self.dll.print(), 'HEAD >> 1 -> 2 ->  TAIL') 
         self.dll.add_to_tail(3)
         self.assertEqual(self.dll.print(), 'HEAD >> 1 -> 2 -> 3 ->  TAIL')  
-
+        self.assertEqual(self.dll.print_reverse(), 'TAIL >> 3 -> 2 -> 1 ->  HEAD' )
 
 
 
@@ -24,9 +24,9 @@ class DoubleLinkedListTests_add_to_tail(unittest.TestCase):
         self.dll2.add_to_tail_2(2)
         self.assertEqual(self.dll2.head.next.value, 2)
         self.dll2.add_to_tail_2(3)
-        self.assertEqual(self.dll2.print(),'HEAD >> 1 -> 2 -> 3 ->  TAIL')
         self.assertEqual(self.dll2.head.next.next.value, 3)
-
+        self.assertEqual(self.dll2.print(), 'HEAD >> 1 -> 2 -> 3 ->  TAIL')
+        self.assertEqual(self.dll2.print_reverse(), 'TAIL >> 3 -> 2 -> 1 ->  HEAD')
 
 if __name__ == '__main__':
     # unittest.main()  

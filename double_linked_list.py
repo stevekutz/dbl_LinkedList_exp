@@ -266,7 +266,7 @@ class DoubleLinkedList:
         while current.next is not None:
             current = current.next
 
-        print(f' current.value   {current.value}')    
+        # print(f' current.value   {current.value}')    
     
         while current is not None:
             list_str += str(current.value) + ' -> '
@@ -285,24 +285,24 @@ dbl_ll_1 = DoubleLinkedList()
 # # dbl_ll_1.remove_by_value(1)
 # # dbl_ll_1.print()
 
-my_list = [1, 2, 3, 4]
-dbl_ll_1.add_list(my_list)
-dbl_ll_1.print()
-# # # dbl_ll_1.print_reverse()
+# my_list = [1, 2, 3]
+# dbl_ll_1.add_list(my_list)
+# dbl_ll_1.print()
+# # # # dbl_ll_1.print_reverse()
 
-# # dbl_ll_1.remove_by_index(0)
-# # dbl_ll_1.print()   # HEAD >> 2 -> 3 ->  TAIL
-# # dbl_ll_1.print_reverse()
+# dbl_ll_1.remove_by_index(2)
+# dbl_ll_1.print()   # HEAD >> 2 -> 3 ->  TAIL
+# dbl_ll_1.print_reverse()
 
 # # dbl_ll_1.remove_by_index(2)
 # # dbl_ll_1.print()
   
-# dbl_ll_1.add_to_tail_2(1)
+dbl_ll_1.add_to_tail_2(1)
 # dbl_ll_1.print()
-# dbl_ll_1.add_to_tail_2(2)
-# dbl_ll_1.add_to_tail_2(3)
-# # dbl_ll_1.print()
-# # dbl_ll_1.print_reverse()
+dbl_ll_1.add_to_tail_2(2)
+dbl_ll_1.add_to_tail_2(3)
+dbl_ll_1.print()
+dbl_ll_1.print_reverse()
 
 # # dbl_ll_1.add_to_head_2(3)
 # # dbl_ll_1.print()  # HEAD >> 3 ->  TAIL
@@ -311,14 +311,14 @@ dbl_ll_1.print()
 # # dbl_ll_1.print() # HEAD >> 1 -> 2 -> 3 ->  TAIL
 # # dbl_ll_1.print_reverse()
 
-dbl_ll_1.add_after_value(0, 999)
-dbl_ll_1.add_after_value(1, 999)   # value 1000 does not exist in list
-dbl_ll_1.add_after_value(2, 999)
-dbl_ll_1.add_after_value(3, 999)
-dbl_ll_1.add_after_value(4, 999)
-dbl_ll_1.add_after_value(1, 888)
-dbl_ll_1.print()
-dbl_ll_1.print_reverse()
+# dbl_ll_1.add_after_value(0, 999)
+# dbl_ll_1.add_after_value(1, 999)   # value 1000 does not exist in list
+# dbl_ll_1.add_after_value(2, 999)
+# dbl_ll_1.add_after_value(3, 999)
+# dbl_ll_1.add_after_value(4, 999)
+# dbl_ll_1.add_after_value(1, 888)
+# dbl_ll_1.print()
+# dbl_ll_1.print_reverse()
 
 # # dbl_ll_1.add_to_head(3)
 # # dbl_ll_1.print()   # HEAD >> 3 ->  TAIL
