@@ -17,7 +17,6 @@ class DoubleLinkedListTests_add_to_tail(unittest.TestCase):
         self.assertEqual(self.dll.print_reverse(), 'TAIL >> 3 -> 2 -> 1 ->  HEAD' )
 
 
-
     def test_add_to_tail_2(self):
         self.dll2.add_to_tail_2(1)
         self.assertEqual(self.dll2.head.value, 1)

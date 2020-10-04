@@ -116,12 +116,13 @@ class DoubleLinkedList:
     def add_before_value(self, value, new_value):
         
         current = self.head
+        new_node = Node(new_value)
+        prev_node = current.prev
         count = 0
 
         # if target is first in list
         if current.value == value:
-            new_node = Node(new_value)
-            prev_node = current.prev
+            current.prev = new_node
             new_node.next = current
             new_node.prev = prev_node
             self.head = new_node
@@ -132,13 +133,15 @@ class DoubleLinkedList:
 
         while current.next is not None:
             if current.next.value == value:
-                new_node = Node(new_value)
-                orig_current_next = current.next  # pointer to rest of list
+                next_node = current.next  # pointer to rest of list
+                if next_node is not None:
+                    next_node.prev = new_node
+                    
                 prev_node = current.prev
                 current.next = new_node
 
-                new_node.next = orig_current_next
-                new_node.prev = prev_node
+                new_node.next = next_node
+                new_node.prev = current
                 return
             current = current.next
 
@@ -158,6 +161,7 @@ class DoubleLinkedList:
         if current is None:
             print(f'value {value} is not in the list')
         else:
+            print(f' current.value {current.value}')
             new_node = Node(new_value)
             new_node.next = current
             new_node.prev = current.prev
@@ -165,10 +169,11 @@ class DoubleLinkedList:
             # if target value is NOT first item in list 
             if current.prev is not None:
                 current.prev.next = new_node
+                current.prev = new_node
             else:
                 # target value is first item in list
                 self.head = new_node
-                # return    
+                current.prev = new_node  
 
     def add_list(self,list_vals):
 
@@ -197,7 +202,7 @@ class DoubleLinkedList:
         if prev_node is None:
             self.head = current.next
             self.head.prev = None
-            # current.prev = 
+  
         else:
             prev_node.next = current.next
             after_node = current.next
@@ -224,12 +229,6 @@ class DoubleLinkedList:
             else:
                 prev_node = current
                 current = prev_node
-                # current.prev = prev_node  
-            # else:
-            #     prev_node.next =  current.next   
-            #     current.prev_node = prev_node
-
-                print(f' current value {current.value}')
 
             # prev_node = current
             current = current.next
@@ -276,10 +275,11 @@ class DoubleLinkedList:
         print(f'{list_str}')
         return list_str
 
-# my_list = [1, 1, 2, 1, 1, 3, 1, 1]
+my_list = [1, 1, 2, 1, 1, 3, 1, 1]
+my_list = [1,2,3]
 # # my_list = [1]
 dbl_ll_1 = DoubleLinkedList()
-# # dbl_ll_1.add_list(my_list)
+dbl_ll_1.add_list(my_list)
 # # dbl_ll_1.print()   # HEAD >> 1 -> 2 -> 3 ->  TAIL
 
 # # dbl_ll_1.remove_by_value(1)
@@ -297,19 +297,19 @@ dbl_ll_1 = DoubleLinkedList()
 # # dbl_ll_1.remove_by_index(2)
 # # dbl_ll_1.print()
   
-dbl_ll_1.add_to_tail_2(1)
+# dbl_ll_1.add_to_tail_2(1)
+# # dbl_ll_1.print()
+# dbl_ll_1.add_to_tail_2(2)
+# dbl_ll_1.add_to_tail_2(3)
 # dbl_ll_1.print()
-dbl_ll_1.add_to_tail_2(2)
-dbl_ll_1.add_to_tail_2(3)
-dbl_ll_1.print()
-dbl_ll_1.print_reverse()
+# dbl_ll_1.print_reverse()
 
-# # dbl_ll_1.add_to_head_2(3)
-# # dbl_ll_1.print()  # HEAD >> 3 ->  TAIL
-# # dbl_ll_1.add_to_head_2(2)
-# # dbl_ll_1.add_to_head_2(1)
-# # dbl_ll_1.print() # HEAD >> 1 -> 2 -> 3 ->  TAIL
-# # dbl_ll_1.print_reverse()
+# dbl_ll_1.add_to_head(3)
+# dbl_ll_1.print()  # HEAD >> 3 ->  TAIL
+# dbl_ll_1.add_to_head(2)
+# dbl_ll_1.add_to_head(1)
+# dbl_ll_1.print() # HEAD >> 1 -> 2 -> 3 ->  TAIL
+# dbl_ll_1.print_reverse()
 
 # dbl_ll_1.add_after_value(0, 999)
 # dbl_ll_1.add_after_value(1, 999)   # value 1000 does not exist in list
@@ -343,5 +343,7 @@ dbl_ll_1.print_reverse()
 # # dbl_ll_1.print()   # HEAD >> 10 -> 11 -> 12 -> 13 -> 999 ->  TAIL
 # # dbl_ll_1.add_after_value(1000, 999)   # value 1000 does not exist in list
 
-# dbl_ll_1.add_before_value_2(11, 999)
-# dbl_ll_1.print()
+dbl_ll_1.add_before_value_2(1, 999)
+dbl_ll_1.print()
+dbl_ll_1.print_reverse()
+

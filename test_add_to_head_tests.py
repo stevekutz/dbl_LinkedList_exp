@@ -13,6 +13,9 @@ class DoubleLinkedListTests_add_to_head(unittest.TestCase):
         self.assertEqual(self.dll.head.value, 2)
         self.dll.add_to_head(1)
         self.assertEqual(self.dll.head.value, 1)
+        self.assertEqual(self.dll.print(), 'HEAD >> 1 -> 2 -> 3 ->  TAIL')  
+        self.assertEqual(self.dll.print_reverse(), 'TAIL >> 3 -> 2 -> 1 ->  HEAD' )
+
 
     # remove instance
     def tearDown(self):
@@ -28,7 +31,8 @@ class DoubleLinkedListTests_add_to_head(unittest.TestCase):
         self.assertEqual(self.dll.head.value, 2)
         self.dll.add_to_head_2(1)
         self.assertEqual(self.dll.head.value, 1)            
-
+        self.assertEqual(self.dll.print(), 'HEAD >> 1 -> 2 -> 3 ->  TAIL')  
+        self.assertEqual(self.dll.print_reverse(), 'TAIL >> 3 -> 2 -> 1 ->  HEAD' )
 
 if __name__ == '__main__':
 ## direct output

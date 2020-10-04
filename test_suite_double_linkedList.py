@@ -1,9 +1,12 @@
+from test_add_before_value import DoubleLinkedListTest_add_before_value
 import unittest
 from test_add_to_head_tests import DoubleLinkedListTests_add_to_head
 from test_add_to_tail_tests import DoubleLinkedListTests_add_to_tail
 from test_add_list import DoubleLinkedListTests_add_list
 from test_remove_by_index import DoubleLinkedListTest_remove_by_index
 from test_add_after_value import DoubleLinkedListTests_add_after_value
+from test_add_before_value import DoubleLinkedListTest_add_before_value
+
 
 def suite():
     suite = unittest.TestSuite()
@@ -20,6 +23,16 @@ def suite():
     suite.addTest(DoubleLinkedListTest_remove_by_index('test_remove_by_index_last'))
 
     suite.addTest(DoubleLinkedListTests_add_after_value('test_add_after_value'))
+
+    suite.addTest(DoubleLinkedListTest_add_before_value('test_insert_before_value_1'))
+    suite.addTest(DoubleLinkedListTest_add_before_value('test_insert_before_value_2'))
+    suite.addTest(DoubleLinkedListTest_add_before_value('test_insert_before_value_3'))  
+    suite.addTest(DoubleLinkedListTest_add_before_value('test_insert_before_value__1'))
+    suite.addTest(DoubleLinkedListTest_add_before_value('test_insert_before_value__2'))
+    suite.addTest(DoubleLinkedListTest_add_before_value('test_insert_before_value__3'))    
+    
+
+
 
     return suite
 
