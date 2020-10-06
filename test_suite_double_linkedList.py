@@ -31,9 +31,9 @@ def suite():
     suite.addTest(DoubleLinkedListTest_add_before_value('test_insert_before_value__2'))
     suite.addTest(DoubleLinkedListTest_add_before_value('test_insert_before_value__3'))    
     
+    suite.addTest(DoubleLinkedListTest_remove_by_value('test_remove_by_value_not_found'))
     suite.addTest(DoubleLinkedListTest_remove_by_value('test_remove_by_value_repeat'))
     suite.addTest(DoubleLinkedListTest_remove_by_value('test_remove_by_value_all'))
-    suite.addTest(DoubleLinkedListTest_remove_by_value('test_remove_by_value_not_found'))
 
     return suite
 
