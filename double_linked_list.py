@@ -8,6 +8,18 @@ class DoubleLinkedList:
     def __init__(self):
         self.head = None
 
+    def get_length(self):
+
+        current = self.head
+        count = 0
+
+        while current is not None:
+            count += 1
+            current = current.next    
+
+        print(f' length is {count}')
+        return count
+
     def add_to_head(self, value):
 
         # List is empty
@@ -216,6 +228,7 @@ class DoubleLinkedList:
        
         current = self.head
         prev_node = None
+        found = False
 
         while current is not None:
             # print(f' at START current value {current.value}')
@@ -242,7 +255,9 @@ class DoubleLinkedList:
             prev_node = current
             current = current.next
 
-
+        if found is False:
+            print(f' value {value} was not found in the list')
+            return f' value {value} was not found in the list'
 
     def print(self):
         current = self.head
@@ -274,7 +289,7 @@ class DoubleLinkedList:
 
         if current is None:
             print(f' Double Linked List is empty')
-            return
+            return f' TAIL >>  HEAD'
 
         while current.next is not None:
             current = current.next
@@ -289,13 +304,16 @@ class DoubleLinkedList:
         print(f'{list_str}')
         return list_str
 
-my_list = [1, 1, 1, 1, 2, 1, 1, 3, 1, 1, 4, 1, 1, 1]
-# my_list = [1,2,3]
-# my_list = [2, 1]
-# my_list = [1, 1, 1, 1]
-dbl_ll_1 = DoubleLinkedList()
-dbl_ll_1.add_list(my_list)
-# # dbl_ll_1.print()   # HEAD >> 1 -> 2 -> 3 ->  TAIL
+# # my_list = [1, 1, 1, 1, 2, 1, 1, 3, 1, 1, 1, 4, 1, 1, 1]
+# my_list = [3,2,5]
+# my_list = [1, 1, 1, 2, 1, 1, 3, 1, 1, 1, 4, 1, 1, 1]
+# my_list = [4, 3, 2, 6]
+# my_list = [1, 1, 1, 2, 1, 1, 3, 1, 1, 1, 4, 1, 1, 1]
+# # my_list = [2, 1]
+# # my_list = [1, 1, 1, 1]
+# dbl_ll_1 = DoubleLinkedList()
+# dbl_ll_1.add_list(my_list)
+# # # dbl_ll_1.print()   # HEAD >> 1 -> 2 -> 3 ->  TAIL
 
 # # dbl_ll_1.remove_by_value(1)
 # # dbl_ll_1.print()
@@ -359,8 +377,8 @@ dbl_ll_1.add_list(my_list)
 # # dbl_ll_1.add_after_value(1000, 999)   # value 1000 does not exist in list
 
 # dbl_ll_1.add_before_value_2(1, 999)
-dbl_ll_1.print()
-dbl_ll_1.remove_by_value(1)
-dbl_ll_1.print()
-dbl_ll_1.print_reverse()
-
+# dbl_ll_1.print()
+# dbl_ll_1.remove_by_value(1)
+# dbl_ll_1.print()
+# dbl_ll_1.print_reverse()
+# # dbl_ll_1.get_length()
