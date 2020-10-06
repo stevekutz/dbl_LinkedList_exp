@@ -213,24 +213,33 @@ class DoubleLinkedList:
             print(f'prev_node.value  {prev_node.value}')
 
     def remove_by_value(self, value):
-        orig_head = self.head    
+       
         current = self.head
         prev_node = None
 
         while current is not None:
-            print(f' at START current value {current.value}')
+            # print(f' at START current value {current.value}')
             while current.value == value:
-                current = current.next
-     
+                if current.next is not None:
+                    current = current.next
+                elif current.value == 1 and current.next is None:
+                    if prev_node is None:
+                        self.head = None
+                        return
+                    else:    
+                        prev_node.next = None
+                        print(f' on last value')
+                        return
+
             if prev_node is None:
                 self.head = current
-                self.head.prev = None
-                # current.prev_node = self.head
-            else:
+                current.prev = None
                 prev_node = current
-                current = prev_node
-
-            # prev_node = current
+            else:
+                prev_node.next = current
+                current.prev = prev_node
+                
+            prev_node = current
             current = current.next
 
 
@@ -241,6 +250,7 @@ class DoubleLinkedList:
 
         if current is None:
             print(f' Double Linked List is empty ')
+            
 
         while current is not None:
             list_str += str(current.value) + ' -> '
@@ -262,6 +272,10 @@ class DoubleLinkedList:
         current = self.head
         list_str = 'TAIL >> '
 
+        if current is None:
+            print(f' Double Linked List is empty')
+            return
+
         while current.next is not None:
             current = current.next
 
@@ -275,9 +289,10 @@ class DoubleLinkedList:
         print(f'{list_str}')
         return list_str
 
-my_list = [1, 1, 2, 1, 1, 3, 1, 1]
-my_list = [1,2,3]
-# # my_list = [1]
+my_list = [1, 1, 1, 1, 2, 1, 1, 3, 1, 1, 4, 1, 1, 1]
+# my_list = [1,2,3]
+# my_list = [2, 1]
+# my_list = [1, 1, 1, 1]
 dbl_ll_1 = DoubleLinkedList()
 dbl_ll_1.add_list(my_list)
 # # dbl_ll_1.print()   # HEAD >> 1 -> 2 -> 3 ->  TAIL
@@ -343,7 +358,9 @@ dbl_ll_1.add_list(my_list)
 # # dbl_ll_1.print()   # HEAD >> 10 -> 11 -> 12 -> 13 -> 999 ->  TAIL
 # # dbl_ll_1.add_after_value(1000, 999)   # value 1000 does not exist in list
 
-dbl_ll_1.add_before_value_2(1, 999)
+# dbl_ll_1.add_before_value_2(1, 999)
+dbl_ll_1.print()
+dbl_ll_1.remove_by_value(1)
 dbl_ll_1.print()
 dbl_ll_1.print_reverse()
 
