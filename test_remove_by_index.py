@@ -15,7 +15,7 @@ class DoubleLinkedListTest_remove_by_index(unittest.TestCase):
     def test_remove_by_index_0(self):
         self.dll.remove_by_index(0)
         self.assertEqual(self.dll.print(), 'HEAD >> 2 -> 3 ->  TAIL')    
-        self.assertCountEqual(self.dll.print_reverse(), 'TAIL >> 3 -> 2 ->  HEAD')
+        self.assertEqual(self.dll.print_reverse(), 'TAIL >> 3 -> 2 ->  HEAD')
 
     def tearDown(self):
         self.dll = None

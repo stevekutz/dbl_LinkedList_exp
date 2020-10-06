@@ -304,15 +304,15 @@ class DoubleLinkedList:
         print(f'{list_str}')
         return list_str
 
-# # my_list = [1, 1, 1, 1, 2, 1, 1, 3, 1, 1, 1, 4, 1, 1, 1]
+my_list = [1, 1, 1, 1, 2, 1, 1, 3, 1, 1, 1, 4, 1, 1, 1]# # 
 # my_list = [3,2,5]
 # my_list = [1, 1, 1, 2, 1, 1, 3, 1, 1, 1, 4, 1, 1, 1]
 # my_list = [4, 3, 2, 6]
 # my_list = [1, 1, 1, 2, 1, 1, 3, 1, 1, 1, 4, 1, 1, 1]
 # # my_list = [2, 1]
 # # my_list = [1, 1, 1, 1]
-# dbl_ll_1 = DoubleLinkedList()
-# dbl_ll_1.add_list(my_list)
+dbl_ll_1 = DoubleLinkedList()
+dbl_ll_1.add_list(my_list)
 # # # dbl_ll_1.print()   # HEAD >> 1 -> 2 -> 3 ->  TAIL
 
 # # dbl_ll_1.remove_by_value(1)
@@ -378,7 +378,7 @@ class DoubleLinkedList:
 
 # dbl_ll_1.add_before_value_2(1, 999)
 # dbl_ll_1.print()
-# dbl_ll_1.remove_by_value(1)
-# dbl_ll_1.print()
-# dbl_ll_1.print_reverse()
-# # dbl_ll_1.get_length()
+dbl_ll_1.remove_by_value(1)
+dbl_ll_1.print()
+dbl_ll_1.print_reverse()
+# dbl_ll_1.get_length()
