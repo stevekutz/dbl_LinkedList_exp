@@ -239,15 +239,6 @@ class DoubleLinkedList:
             return
 
         while current is not None:
-            # temp = current.prev
-            # current.prev = current.next
-            # current.next = temp
-            # current = current.prev        
-
-            # if temp is not None:
-            #     self.head = temp.prev
-            
-
             temp = current.prev
             current.prev = current.next
             current.next = temp
@@ -255,6 +246,36 @@ class DoubleLinkedList:
         
             if temp is not None:
                 self.head = temp.prev
+
+
+    def convert_to_circular(self):
+        current = self.head
+        orig_head = self.head
+
+        if current is None:
+            print(f' list is empty')
+
+        # loop to end connect first and last nodes
+        while current is not None:
+            if current.next is None:
+                current.next = orig_head
+                orig_head.prev = current
+                break   
+            current = current.next    
+
+    def detect_circular(self):
+        current = self.head
+
+        addr_set = set()
+        list_str = 'HEAD >> '
+
+        if current.prev is not None:
+            addr_set.add(current)
+            if current.value == current.prev.next.value:
+                print(f' loop detected , last node before loop {current.prev.value}')
+
+
+    
 
     def remove_by_value(self, value):
        
@@ -289,7 +310,8 @@ class DoubleLinkedList:
 
         if found is False:
             print(f' value {value} was not found in the list')
-            return f' value {value} was not found in the list'
+            return f' value {value} was not found in the list' 
+
 
     def print(self):
         current = self.head
@@ -336,21 +358,26 @@ class DoubleLinkedList:
         print(f'{list_str}')
         return list_str
 
-# my_list = [1, 1, 1, 1, 2, 1, 1, 3, 1, 1, 1, 4, 1, 1, 1]# # 
-my_list = [3,2,5]
+my_list = [1, 1, 1, 1, 2, 1, 1, 3, 1, 1, 1, 4, 1, 1, 1]# # 
+# my_list = [3,2,5]
 # my_list = [1, 1, 1, 2, 1, 1, 3, 1, 1, 1, 4, 1, 1, 1]
 # my_list = [4, 3, 2, 6]
 # my_list = [1, 1, 1, 2, 1, 1, 3, 1, 1, 1, 4, 1, 1, 1]
 # # my_list = [2, 1]
 # # my_list = [1, 1, 1, 1]
 
-my_list = [1, 2, 3]
+# my_list = [1, 2, 3]
 dbl_ll_1 = DoubleLinkedList()
 dbl_ll_1.add_list(my_list)
 # dbl_ll_1.add_to_head_2(3)
 # dbl_ll_1.add_to_head_2(2)
 # dbl_ll_1.add_to_head_2(1)
 dbl_ll_1.print()
+dbl_ll_1.remove_by_value (1)
+dbl_ll_1.print()
+
+dbl_ll_1.convert_to_circular()
+dbl_ll_1.detect_circular()
 
 # dbl_ll_1.print()   # HEAD >> 1 -> 2 -> 3 ->  TAIL
 # dbl_ll_1.print_reverse()
@@ -424,6 +451,7 @@ dbl_ll_1.print()
 # dbl_ll_1.get_length()
 
 # dbl_ll_1.print()
-dbl_ll_1.reverse_list()
-dbl_ll_1.print()
-dbl_ll_1.print_reverse()
+# dbl_ll_1.reverse_list()
+# dbl_ll_1.print()
+# dbl_ll_1.print_reverse()
+
