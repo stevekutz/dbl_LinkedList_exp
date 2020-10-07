@@ -51,6 +51,9 @@ class DoubleLinkedList:
             current.prev = new_node
         self.head = new_node
 
+    
+    
+
 
     def add_to_tail(self, value):
 
@@ -224,6 +227,35 @@ class DoubleLinkedList:
             print(f' current.value  {current.value} ')
             print(f'prev_node.value  {prev_node.value}')
 
+
+    def reverse_list(self):
+
+        current = self.head
+        temp = None
+
+
+        if current is None:
+            print(f' list is empty')
+            return
+
+        while current is not None:
+            # temp = current.prev
+            # current.prev = current.next
+            # current.next = temp
+            # current = current.prev        
+
+            # if temp is not None:
+            #     self.head = temp.prev
+            
+
+            temp = current.prev
+            current.prev = current.next
+            current.next = temp
+            current = current.prev
+        
+            if temp is not None:
+                self.head = temp.prev
+
     def remove_by_value(self, value):
        
         current = self.head
@@ -304,16 +336,24 @@ class DoubleLinkedList:
         print(f'{list_str}')
         return list_str
 
-my_list = [1, 1, 1, 1, 2, 1, 1, 3, 1, 1, 1, 4, 1, 1, 1]# # 
-# my_list = [3,2,5]
+# my_list = [1, 1, 1, 1, 2, 1, 1, 3, 1, 1, 1, 4, 1, 1, 1]# # 
+my_list = [3,2,5]
 # my_list = [1, 1, 1, 2, 1, 1, 3, 1, 1, 1, 4, 1, 1, 1]
 # my_list = [4, 3, 2, 6]
 # my_list = [1, 1, 1, 2, 1, 1, 3, 1, 1, 1, 4, 1, 1, 1]
 # # my_list = [2, 1]
 # # my_list = [1, 1, 1, 1]
+
+my_list = [1, 2, 3]
 dbl_ll_1 = DoubleLinkedList()
 dbl_ll_1.add_list(my_list)
-# # # dbl_ll_1.print()   # HEAD >> 1 -> 2 -> 3 ->  TAIL
+# dbl_ll_1.add_to_head_2(3)
+# dbl_ll_1.add_to_head_2(2)
+# dbl_ll_1.add_to_head_2(1)
+dbl_ll_1.print()
+
+# dbl_ll_1.print()   # HEAD >> 1 -> 2 -> 3 ->  TAIL
+# dbl_ll_1.print_reverse()
 
 # # dbl_ll_1.remove_by_value(1)
 # # dbl_ll_1.print()
@@ -378,7 +418,12 @@ dbl_ll_1.add_list(my_list)
 
 # dbl_ll_1.add_before_value_2(1, 999)
 # dbl_ll_1.print()
-dbl_ll_1.remove_by_value(1)
+# dbl_ll_1.remove_by_value(1)
+# dbl_ll_1.print()
+# dbl_ll_1.print_reverse()
+# dbl_ll_1.get_length()
+
+# dbl_ll_1.print()
+dbl_ll_1.reverse_list()
 dbl_ll_1.print()
 dbl_ll_1.print_reverse()
-# dbl_ll_1.get_length()

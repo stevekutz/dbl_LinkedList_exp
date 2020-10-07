@@ -7,6 +7,8 @@ from test_remove_by_index import DoubleLinkedListTest_remove_by_index
 from test_add_after_value import DoubleLinkedListTests_add_after_value
 from test_add_before_value import DoubleLinkedListTest_add_before_value
 from test_remove_by_value import DoubleLinkedListTest_remove_by_value
+from test_reverse_list import DoubleLinkedListTest_reverse_list
+
 
 def suite():
     suite = unittest.TestSuite()
@@ -34,6 +36,8 @@ def suite():
     suite.addTest(DoubleLinkedListTest_remove_by_value('test_remove_by_value_not_found'))
     suite.addTest(DoubleLinkedListTest_remove_by_value('test_remove_by_value_repeat'))
     suite.addTest(DoubleLinkedListTest_remove_by_value('test_remove_by_value_all'))
+
+    suite.addTest(DoubleLinkedListTest_reverse_list('test_reverse_list'))
 
     return suite
 
