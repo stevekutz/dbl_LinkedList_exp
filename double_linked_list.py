@@ -295,12 +295,16 @@ class DoubleLinkedList:
         if self.detect_circular():
             current = self.head
             last_p = current.prev
-            
+
             new_node = Node(new_value)
             new_node.prev = last_p
             new_node.next = current
+            current.prev = new_node
 
-            # last_p.next = new_node
+            last_p.next = new_node
+
+
+            self.head = new_node
 
 
 
@@ -338,6 +342,44 @@ class DoubleLinkedList:
         if found is False:
             print(f' value {value} was not found in the list')
             return f' value {value} was not found in the list' 
+
+    def print_circular(self):
+
+        current = self.head
+        addr_set = set()
+        str_l = '==> HEAD >> '
+
+        if self.detect_circular():
+
+            while current not in addr_set:
+                str_l += str(current.value) + ' -> '
+                addr_set.add(current)
+                current = current.next
+
+        str_l +=  '===> ' + str(current.value)   
+        print(f' {str_l}')
+        return str_l
+
+    def print_circular_reverse(self):
+        
+        current = None
+        str_l = 'LAST >> '
+        addr_set = set()
+
+        if self.detect_circular():
+            current = self.head.prev
+
+            while current not in addr_set:
+                addr_set.add(current)
+                str_l += str(current.value) + ' => '
+                current= current.prev
+
+        str_l += '===>'  + str(current.value)
+        print(f' {str_l}')
+        return str_l
+
+
+
 
 
     def print(self):
@@ -492,3 +534,5 @@ dbl_ll_1.add_value_to_front_circular(100)
 
 print(f' @@@@@@@@ \n')
 dbl_ll_1.detect_circular()
+dbl_ll_1.print_circular()
+dbl_ll_1.print_circular_reverse()
