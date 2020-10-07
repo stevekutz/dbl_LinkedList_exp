@@ -267,15 +267,42 @@ class DoubleLinkedList:
         current = self.head
 
         addr_set = set()
-        list_str = 'HEAD >> '
+
 
         if current.prev is not None:
             addr_set.add(current)
             if current.value == current.prev.next.value:
                 print(f' loop detected , last node before loop {current.prev.value}')
+                return True
 
+        print(f' Not a Circular Double Linked List')
+        return False        
 
+    def remove_circular(self):
+
+        current = self.head
+
+        if current.prev is not None:
+            current.prev.next = None
+            current.prev = None
+            return
+
+        print(f' Not a Circular Double Linked List')
+        return False
     
+
+    def add_value_to_front_circular(self, new_value):
+        if self.detect_circular():
+            current = self.head
+            last_p = current.prev
+            
+            new_node = Node(new_value)
+            new_node.prev = last_p
+            new_node.next = current
+
+            # last_p.next = new_node
+
+
 
     def remove_by_value(self, value):
        
@@ -366,18 +393,18 @@ my_list = [1, 1, 1, 1, 2, 1, 1, 3, 1, 1, 1, 4, 1, 1, 1]# #
 # # my_list = [2, 1]
 # # my_list = [1, 1, 1, 1]
 
-# my_list = [1, 2, 3]
+my_list = [1, 2, 3]
 dbl_ll_1 = DoubleLinkedList()
 dbl_ll_1.add_list(my_list)
 # dbl_ll_1.add_to_head_2(3)
 # dbl_ll_1.add_to_head_2(2)
 # dbl_ll_1.add_to_head_2(1)
-dbl_ll_1.print()
-dbl_ll_1.remove_by_value (1)
+# dbl_ll_1.print()
+# dbl_ll_1.remove_by_value (1)
 dbl_ll_1.print()
 
-dbl_ll_1.convert_to_circular()
-dbl_ll_1.detect_circular()
+# dbl_ll_1.print()
+# dbl_ll_1.print_reverse()
 
 # dbl_ll_1.print()   # HEAD >> 1 -> 2 -> 3 ->  TAIL
 # dbl_ll_1.print_reverse()
@@ -455,3 +482,13 @@ dbl_ll_1.detect_circular()
 # dbl_ll_1.print()
 # dbl_ll_1.print_reverse()
 
+
+dbl_ll_1.convert_to_circular()
+dbl_ll_1.detect_circular()
+
+dbl_ll_1.add_value_to_front_circular(100)
+
+# dbl_ll_1.remove_circular()
+
+print(f' @@@@@@@@ \n')
+dbl_ll_1.detect_circular()
