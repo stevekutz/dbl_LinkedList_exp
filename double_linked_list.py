@@ -307,6 +307,19 @@ class DoubleLinkedList:
             self.head = new_node
 
 
+    def add_value_to_last_circular(self, new_value):
+        if self.detect_circular():
+            current = self.head
+            last = self.head.prev
+
+
+            new_node = Node(new_value)
+            new_node.prev = last
+            new_node.next = current
+            
+            last.next = new_node
+            current.prev = new_node
+
 
     def remove_by_value(self, value):
        
@@ -356,7 +369,7 @@ class DoubleLinkedList:
                 addr_set.add(current)
                 current = current.next
 
-        str_l +=  '===> ' + str(current.value)   
+        str_l +=  ' TAIL ===> ' + str(current.value)   
         print(f' {str_l}')
         return str_l
 
@@ -374,7 +387,7 @@ class DoubleLinkedList:
                 str_l += str(current.value) + ' => '
                 current= current.prev
 
-        str_l += '===>'  + str(current.value)
+        str_l += ' HEAD ===> '  + str(current.value)
         print(f' {str_l}')
         return str_l
 
@@ -528,7 +541,8 @@ dbl_ll_1.print()
 dbl_ll_1.convert_to_circular()
 dbl_ll_1.detect_circular()
 
-dbl_ll_1.add_value_to_front_circular(100)
+# dbl_ll_1.add_value_to_front_circular(100)
+dbl_ll_1.add_value_to_last_circular(999)
 
 # dbl_ll_1.remove_circular()
 
@@ -536,3 +550,4 @@ print(f' @@@@@@@@ \n')
 dbl_ll_1.detect_circular()
 dbl_ll_1.print_circular()
 dbl_ll_1.print_circular_reverse()
+
