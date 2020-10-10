@@ -356,6 +356,38 @@ class DoubleLinkedList:
             print(f' value {value} was not found in the list')
             return f' value {value} was not found in the list' 
 
+
+    def remove_nth_from_end(self, n):
+        current = self.head
+        target = self.head
+        length = 1
+
+        while current.next is not None:
+            length += 1
+            current = current.next
+
+            if length > n + 1:
+                target = target.next
+
+            
+        if n > length:
+            return self.head
+
+        if length == n:
+            self.head = self.head.next
+            self.head.prev = None
+            return
+
+
+        else:
+            temp_prev = target
+            target.next = target.next.next 
+            if temp_prev.next is not None:
+                target.next.prev = temp_prev
+            return target
+
+
+
     def print_circular(self):
 
         current = self.head
@@ -440,7 +472,7 @@ class DoubleLinkedList:
         print(f'{list_str}')
         return list_str
 
-my_list = [1, 1, 1, 1, 2, 1, 1, 3, 1, 1, 1, 4, 1, 1, 1]# # 
+# my_list = [1, 1, 1, 1, 2, 1, 1, 3, 1, 1, 1, 4, 1, 1, 1]# # 
 # my_list = [3,2,5]
 # my_list = [1, 1, 1, 2, 1, 1, 3, 1, 1, 1, 4, 1, 1, 1]
 # my_list = [4, 3, 2, 6]
@@ -448,7 +480,9 @@ my_list = [1, 1, 1, 1, 2, 1, 1, 3, 1, 1, 1, 4, 1, 1, 1]# #
 # # my_list = [2, 1]
 # # my_list = [1, 1, 1, 1]
 
-my_list = [1, 2, 3]
+
+# my_list = [1, 2, 3]
+my_list = [5, 4, 3, 2, 1, 0]
 dbl_ll_1 = DoubleLinkedList()
 dbl_ll_1.add_list(my_list)
 # dbl_ll_1.add_to_head_2(3)
@@ -457,6 +491,12 @@ dbl_ll_1.add_list(my_list)
 # dbl_ll_1.print()
 # dbl_ll_1.remove_by_value (1)
 dbl_ll_1.print()
+dbl_ll_1.remove_nth_from_end(1)
+dbl_ll_1.print()
+dbl_ll_1.print_reverse()
+
+
+
 
 # dbl_ll_1.print()
 # dbl_ll_1.print_reverse()
@@ -538,16 +578,16 @@ dbl_ll_1.print()
 # dbl_ll_1.print_reverse()
 
 
-dbl_ll_1.convert_to_circular()
-dbl_ll_1.detect_circular()
+# dbl_ll_1.convert_to_circular()
+# dbl_ll_1.detect_circular()
 
-# dbl_ll_1.add_value_to_front_circular(100)
-dbl_ll_1.add_value_to_last_circular(999)
+# # dbl_ll_1.add_value_to_front_circular(100)
+# dbl_ll_1.add_value_to_last_circular(999)
 
-# dbl_ll_1.remove_circular()
+# # dbl_ll_1.remove_circular()
 
-print(f' @@@@@@@@ \n')
-dbl_ll_1.detect_circular()
-dbl_ll_1.print_circular()
-dbl_ll_1.print_circular_reverse()
+# print(f' @@@@@@@@ \n')
+# dbl_ll_1.detect_circular()
+# dbl_ll_1.print_circular()
+# dbl_ll_1.print_circular_reverse()
 
