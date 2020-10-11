@@ -394,6 +394,30 @@ class DoubleLinkedList:
             return target
 
 
+    def sum_palindromes(self):
+
+        def is_palindrome(val):
+            d = 0
+            s = 0
+            temp = val
+
+            while val > 0:
+                d = val % 10
+                s = s * 10 + d
+                val = val//10
+
+            return s == temp
+
+        current = self.head
+        sum_pal = 0
+
+        while current is not None:
+            if is_palindrome(current.value):
+                sum_pal += current.value
+            current = current.next
+
+        return sum_pal                
+
 
     def print_circular(self):
 
@@ -489,7 +513,7 @@ class DoubleLinkedList:
 
 
 # my_list = [1, 2, 3]
-my_list = [4, 3, 2, 1]
+my_list = [818, 1, 242, 11, 20, 3003]
 dbl_ll_1 = DoubleLinkedList()
 dbl_ll_1.add_list(my_list)
 # dbl_ll_1.add_to_head_2(3)
@@ -498,9 +522,11 @@ dbl_ll_1.add_list(my_list)
 # dbl_ll_1.print()
 # dbl_ll_1.remove_by_value (1)
 dbl_ll_1.print()
-dbl_ll_1.remove_nth_from_end(4)
-dbl_ll_1.print()
-dbl_ll_1.print_reverse()
+print(dbl_ll_1.sum_palindromes())
+
+# dbl_ll_1.remove_nth_from_end(4)
+# dbl_ll_1.print()
+# dbl_ll_1.print_reverse()
 
 
 
