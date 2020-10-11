@@ -9,7 +9,7 @@ from test_add_before_value import DoubleLinkedListTest_add_before_value
 from test_remove_by_value import DoubleLinkedListTest_remove_by_value
 from test_reverse_list import DoubleLinkedListTest_reverse_list
 from test_circular import DoubleLinkedListTest_circular
-
+from test_remove_nth_from_end import DoubleLinkedListTest_remove_nth_from_end
 
 def suite():
     suite = unittest.TestSuite()
@@ -45,6 +45,12 @@ def suite():
     suite.addTest(DoubleLinkedListTest_circular('test_add_value_to_end_circular'))
 
 
+    suite.addTest(DoubleLinkedListTest_remove_nth_from_end('test_remove_0th_from_end'))
+    suite.addTest(DoubleLinkedListTest_remove_nth_from_end('test_remove_100th_from_end'))
+    suite.addTest(DoubleLinkedListTest_remove_nth_from_end('test_remove_1st_from_end'))
+    suite.addTest(DoubleLinkedListTest_remove_nth_from_end('remove_2nd_from_end'))
+    suite.addTest(DoubleLinkedListTest_remove_nth_from_end('test_remove_3rd_from_end'))
+    suite.addTest(DoubleLinkedListTest_remove_nth_from_end('test_remove_4th_from_end'))
 
     return suite
 

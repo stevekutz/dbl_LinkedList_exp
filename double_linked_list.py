@@ -358,9 +358,16 @@ class DoubleLinkedList:
 
 
     def remove_nth_from_end(self, n):
+
+        if n == 0:
+            print(f' distance of zero from end returns list')
+            return self.head
+
         current = self.head
         target = self.head
         length = 1
+
+
 
         while current.next is not None:
             length += 1
@@ -482,7 +489,7 @@ class DoubleLinkedList:
 
 
 # my_list = [1, 2, 3]
-my_list = [5, 4, 3, 2, 1, 0]
+my_list = [4, 3, 2, 1]
 dbl_ll_1 = DoubleLinkedList()
 dbl_ll_1.add_list(my_list)
 # dbl_ll_1.add_to_head_2(3)
@@ -491,7 +498,7 @@ dbl_ll_1.add_list(my_list)
 # dbl_ll_1.print()
 # dbl_ll_1.remove_by_value (1)
 dbl_ll_1.print()
-dbl_ll_1.remove_nth_from_end(1)
+dbl_ll_1.remove_nth_from_end(4)
 dbl_ll_1.print()
 dbl_ll_1.print_reverse()
 
