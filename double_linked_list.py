@@ -488,13 +488,16 @@ class DoubleLinkedList:
 
         if current is None:
             print(f' Double Linked List is empty')
+            print('TAIL >> HEAD')
             return f' TAIL >>  HEAD'
 
+        # go to end of list
         while current.next is not None:
             current = current.next
 
         # print(f' current.value   {current.value}')    
     
+        # iterate through until prev is None
         while current is not None:
             list_str += str(current.value) + ' -> '
             current = current.prev
@@ -502,6 +505,67 @@ class DoubleLinkedList:
         list_str += ' HEAD'
         print(f'{list_str}')
         return list_str
+
+
+
+    def remove_by_value_2(self, value):
+        
+        current = self.head  # pointer to orig list
+        prev_node = None
+        new_current = self.head  # pointer to non-value list built via re-attaching nodes around value
+
+        # return next node that is not value
+        def find_next_node(cur_val):
+            while cur_val is not None and cur_val.value == value:
+                cur_val = cur_val.next    
+            return cur_val
+
+        while current is not None:            
+            next_node = find_next_node(current)
+            current = next_node
+
+            # in case entire list is made of value
+            if next_node is None and prev_node is None:
+                print(f' all values were removed')
+                new_current = None
+                break
+
+            # if last node is only followed by value(s), set next to None
+            if next_node is None and prev_node is not None:
+                 prev_node.next = None
+
+            # reconnect pointers around value
+            else:                   
+                # set up first valid node
+                if prev_node is None:
+                    prev_node = next_node
+                    prev_node.prev = None
+                    new_current = prev_node
+                # connect next valid node
+                else:
+                    prev_node.next = next_node
+                    next_node.prev = prev_node
+                    prev_node = next_node
+
+            if current is not None:
+                current = current.next
+        
+        self.head = new_current
+        return self.head
+        
+        # return new_current
+
+my_list = [2, 3, 4]
+# my_list = [1, 1, 2, 5, 6, 1, 1, 1, 3, 1, 4, 9, 1, 1, 1]
+# my_list = [1, 1, 1, 1]
+dll = DoubleLinkedList()
+dll.add_list(my_list)
+
+# dll.print()
+dll.remove_by_value_2(1)
+dll.print()
+dll.print_reverse()
+
 
 # my_list = [1, 1, 1, 1, 2, 1, 1, 3, 1, 1, 1, 4, 1, 1, 1]# # 
 # my_list = [3,2,5]
@@ -512,17 +576,17 @@ class DoubleLinkedList:
 # # my_list = [1, 1, 1, 1]
 
 
-# my_list = [1, 2, 3]
-my_list = [818, 1, 242, 11, 20, 3003]
-dbl_ll_1 = DoubleLinkedList()
-dbl_ll_1.add_list(my_list)
-# dbl_ll_1.add_to_head_2(3)
-# dbl_ll_1.add_to_head_2(2)
-# dbl_ll_1.add_to_head_2(1)
+# # my_list = [1, 2, 3]
+# my_list = [818, 1, 242, 11, 20, 3003]
+# dbl_ll_1 = DoubleLinkedList()
+# dbl_ll_1.add_list(my_list)
+# # dbl_ll_1.add_to_head_2(3)
+# # dbl_ll_1.add_to_head_2(2)
+# # dbl_ll_1.add_to_head_2(1)
+# # dbl_ll_1.print()
+# # dbl_ll_1.remove_by_value (1)
 # dbl_ll_1.print()
-# dbl_ll_1.remove_by_value (1)
-dbl_ll_1.print()
-print(dbl_ll_1.sum_palindromes())
+# print(dbl_ll_1.sum_palindromes())
 
 # dbl_ll_1.remove_nth_from_end(4)
 # dbl_ll_1.print()
