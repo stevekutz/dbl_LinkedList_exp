@@ -510,53 +510,38 @@ class DoubleLinkedList:
 
     def remove_by_value_2(self, value):
         
-        current = self.head  # pointer to orig list
+        current = self.head
         prev_node = None
-        new_current = self.head  # pointer to non-value list built via re-attaching nodes around value
-
-        # return next node that is not value
-        def find_next_node(cur_val):
-            while cur_val is not None and cur_val.value == value:
-                cur_val = cur_val.next    
-            return cur_val
-
+    
         while current is not None:            
-            next_node = find_next_node(current)
-            current = next_node
-
-            # in case entire list is made of value
-            if next_node is None and prev_node is None:
-                print(f' all values were removed')
-                new_current = None
-                break
-
-            # if last node is only followed by value(s), set next to None
-            if next_node is None and prev_node is not None:
+            while current is not None and current.value == value:
+                current = current.next
+            # entire list contained value
+            if current is None and prev_node is None:
+                self.head = None
+                return
+            # assign last node next to None
+            if current is None and prev_node is not None:
                  prev_node.next = None
-
-            # reconnect pointers around value
-            else:                   
-                # set up first valid node
+            else:     
+                # set up first node              
                 if prev_node is None:
-                    prev_node = next_node
-                    prev_node.prev = None
-                    new_current = prev_node
-                # connect next valid node
+                    self.head = current
+                    current.prev = None
+                    prev_node = current
+                # connect non-value nodes    
                 else:
-                    prev_node.next = next_node
-                    next_node.prev = prev_node
-                    prev_node = next_node
+                    prev_node.next = current
+                    current.prev = prev_node
 
             if current is not None:
+                prev_node = current
                 current = current.next
-        
-        self.head = new_current
-        return self.head
-        
-        # return new_current
 
-my_list = [2, 3, 4]
-# my_list = [1, 1, 2, 5, 6, 1, 1, 1, 3, 1, 4, 9, 1, 1, 1]
+# 
+# my_list = [1]
+# my_list = [2, 3, 4]
+my_list = [1, 1, 2, 5, 6, 1, 1, 1, 3, 1, 4, 9, 1, 1, 1]
 # my_list = [1, 1, 1, 1]
 dll = DoubleLinkedList()
 dll.add_list(my_list)
