@@ -10,6 +10,7 @@ from test_remove_by_value import DoubleLinkedListTest_remove_by_value
 from test_reverse_list import DoubleLinkedListTest_reverse_list
 from test_circular import DoubleLinkedListTest_circular
 from test_remove_nth_from_end import DoubleLinkedListTest_remove_nth_from_end
+from test_remove_by_value_2 import DoubleLinkedListTest_remove_by_value_2
 
 def suite():
     suite = unittest.TestSuite()
@@ -51,6 +52,13 @@ def suite():
     suite.addTest(DoubleLinkedListTest_remove_nth_from_end('remove_2nd_from_end'))
     suite.addTest(DoubleLinkedListTest_remove_nth_from_end('test_remove_3rd_from_end'))
     suite.addTest(DoubleLinkedListTest_remove_nth_from_end('test_remove_4th_from_end'))
+
+
+    suite.addTest(DoubleLinkedListTest_remove_by_value_2('test_remove_empty'))
+    suite.addTest(DoubleLinkedListTest_remove_by_value_2('test_remove_all'))
+    suite.addTest(DoubleLinkedListTest_remove_by_value_2('test_remove_all_2_repeat'))
+    suite.addTest(DoubleLinkedListTest_remove_by_value_2('test_remove_not_found'))
+
 
     return suite
 
